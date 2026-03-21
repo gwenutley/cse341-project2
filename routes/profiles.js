@@ -7,4 +7,9 @@ const profilesController = require("../controllers/profiles");
 routes.get("/", profilesController.getAll);
 routes.get("/:id", profilesController.getSingle);
 
+//look in profile controller to update, make, and delete profiles
+routes.post("/", profilesController.createProfile);
+routes.put("/:id", profilesController.updateProfile);
+routes.delete("/:id", profilesController.deleteProfile );
+
 module.exports = routes;
