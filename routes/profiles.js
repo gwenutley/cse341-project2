@@ -1,4 +1,5 @@
 const routes = require("express").Router();
+const {profileValidationRules, validate} = require("../middleware/validation");
 
 //take us to the logic in controller file
 const profilesController = require("../controllers/profiles");
@@ -8,8 +9,11 @@ routes.get("/", profilesController.getAll);
 routes.get("/:id", profilesController.getSingle);
 
 //look in profile controller to update, make, and delete profiles
-routes.post("/", profilesController.createProfile);
-routes.put("/:id", profilesController.updateProfile);
+routes.post("/", profileValidationRules(), validate, profilesController.createProfile);
+
+
+routes.put("/:id", profileValidationRules(), validate, profilesController.updateProfile);
+
 routes.delete("/:id", profilesController.deleteProfile );
 
 module.exports = routes;

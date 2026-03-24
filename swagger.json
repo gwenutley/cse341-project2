@@ -162,11 +162,17 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "description": "No Content"
           },
           "500": {
             "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "profile not found"
+          },
+          "400": {
+            "description": "Invalid profile ID"
           }
         }
       }
