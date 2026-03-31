@@ -32,8 +32,7 @@ app
         res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         next();
     })
-    .use(cors({ methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"]}))
-    .use(cors({ origin: "https://cse341-project2-x9o6.onrender.com", credentials: true }))
+    .use(cors({ origin: "*", methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], credentials: true}))
     .use("/", require("./routes/index.js"));
 
     passport.use(new GitHubStrategy({
