@@ -5,7 +5,7 @@
     "description": "Profiles Api",
     "version": "1.0.0"
   },
-  "host": "localhost:4000",
+  "host": "cse341-project2-x9o6.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
