@@ -1,5 +1,6 @@
 const routes = require("express").Router();
 const { workoutValidationRules, validate } = require("../middleware/validation");
+const { isAuthenticated } = require("../middleware/authentification");
 
 //take us to the logic in controller file
 const workoutsController = require("../controllers/workouts");
@@ -9,10 +10,10 @@ routes.get("/", workoutsController.getAll);
 routes.get("/:id", workoutsController.getSingle);
 
 //look in profile controller to update, make, and delete profiles
-routes.post("/", validate, workoutValidationRules(), workoutsController.createWorkout);
+routes.post("/", isAuthenticated, validate, workoutValidationRules(), workoutsController.createWorkout);
 
-routes.put("/:id", validate, workoutValidationRules(), workoutsController.updateWorkout);
+routes.put("/:id", isAuthenticated, validate, workoutValidationRules(), workoutsController.updateWorkout);
 
-routes.delete("/:id", workoutsController.deleteWorkout );
+routes.delete("/:id", isAuthenticated, workoutsController.deleteWorkout );
 
 module.exports = routes;
